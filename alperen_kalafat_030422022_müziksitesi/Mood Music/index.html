@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Music Giriş</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Mood Music 🎵</h2>
+    <input type="text" id="username" placeholder="Kullanıcı adı" />
+    <input type="password" id="password" placeholder="Şifre" />
+    <button onclick="login()">Giriş Yap</button>
+    <button onclick="register()">Kayıt Ol</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const stored = JSON.parse(localStorage.getItem(user));
+
+      if (stored && stored.password === pass) {
+        sessionStorage.setItem("currentUser", user);
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("message").innerText = "Hatalı kullanıcı adı veya şifre!";
+      }
+    }
+
+    function register() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user && pass) {
+        if (localStorage.getItem(user)) {
+          document.getElementById("message").innerText = "Bu kullanıcı adı zaten alınmış!";
+        } else {
+          localStorage.setItem(user, JSON.stringify({ password: pass }));
+          document.getElementById("message").innerText = "Kayıt başarılı! Giriş yapabilirsiniz.";
+        }
+      } else {
+        document.getElementById("message").innerText = "Lütfen tüm alanları doldurun.";
+      }
+    }
+  </script>
+</body>
+</html>
+

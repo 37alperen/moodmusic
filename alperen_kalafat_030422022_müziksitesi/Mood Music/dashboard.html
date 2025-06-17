@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Music 🎵</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <h1 id="siteTitle">Mood Music</h1>
+    <button onclick="changeTheme()" class="theme-btn">Temayı Değiştir</button>
+  </header>
+
+  <div class="controls">
+    <label for="emotionRange">Mutluluk Yüzdesi: <span id="emotionValue">50%</span></label>
+    <input type="range" id="emotionRange" min="0" max="100" value="50">
+  </div>
+
+  <div id="effectArea"></div>
+
+  <div class="music-controls">
+    <button onclick="previousSong()">⏮ Önceki</button>
+    <audio id="audioPlayer" controls autoplay></audio>
+    <button onclick="nextSong()">⏭ Sonraki</button>
+  </div>
+
+  <div id="songDisplay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
